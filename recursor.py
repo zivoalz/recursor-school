@@ -1,4 +1,3 @@
-
 # path of daily returns
 #prints a path of daily stock returns
 # Nassim Taleb's - dynanic hedging exercise
@@ -6,8 +5,8 @@
 
 import random
 import math
-import numpy
-import pylab
+# import numpy #not used
+import pylab # graphing library
 
 random.seed()
 annualVol = .157 # annual standard deviation of returns
@@ -26,13 +25,19 @@ for i in range(1 , annualTradingDays + 1): # range goes to -1 of max
     assetPrice = assetPrice * math.exp(-0.5 * math.pow(annualVol,2.0) * (1.0/annualTradingDays) + annualVol * math.pow(1.0/annualTradingDays, .5) * ranNorm)
     prices.append(assetPrice)
 else:
-    print prices
-    print days
-#pl.plot(days, prices)
+    # print prices # for testing
+    # print days   # for testing
 
-# Make an array of x values
+# use pylab to plot data both the x and y
+    pylab.plot(days, prices)
 
+# axis lables
+    pylab.xlabel('Trading Days')
+    pylab.ylabel('Asset Price')
 
-# use pylab to plot x and y
-pylab.plot(days, prices)
-pylab.show()
+# title
+    pylab.title('Geometric Brownian Motion')
+
+# show the graphing
+    pylab.show()
+
